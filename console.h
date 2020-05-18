@@ -76,4 +76,5 @@ int cmd_select(int nfds,
  */
 bool run_console(char *infile_name);
 
+bool do_hello(int argc, char *argv[]);
 #endif /* LAB0_CONSOLE_H */

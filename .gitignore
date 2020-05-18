@@ -5,3 +5,6 @@ qtest
 .vscode
 .devcontainer
 core*
+
+tags
+cscope.*

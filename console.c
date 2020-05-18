@@ -628,3 +628,8 @@ bool run_console(char *infile_name)
         cmd_select(0, NULL, NULL, NULL, NULL);
     return err_cnt == 0;
 }
+
+bool do_hello(int argc, char *argv[])
+{
+    return (bool) printf("Hello, World\n");
+}
