@@ -25,6 +25,7 @@ typedef struct ELE {
 /* Queue structure */
 typedef struct {
     list_ele_t *head; /* Linked list of elements */
+    list_ele_t *tail; /* Points to the tail of queue */
     int size;         /* size of the queue */
 } queue_t;
 
@@ -92,4 +93,20 @@ void q_reverse(queue_t *q);
  */
 void q_sort(queue_t *q);
 
+/*
+ * Check the queue status and return specific value
+ *
+ * States:
+ * 		- NOTHING: the q points to NULL, return 0
+ * 		- EMPTY: the q->head, q->tail point to NULL, return 1
+ * 		- OTHERS: return 2
+ */
+#define NOTHING 0
+#define EMPTY 1
+#define OTHERS 2
+int q_status(const queue_t *q);
+
+int compare(const list_ele_t *a, const list_ele_t *b);
+list_ele_t *mergeSort(list_ele_t *head);
+list_ele_t *merge(list_ele_t *l1, list_ele_t *l2);
 #endif /* LAB0_QUEUE_H */
