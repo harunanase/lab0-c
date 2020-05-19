@@ -1,3 +1,6 @@
+# 開發紀錄
+[HackMD - harunanase](https://hackmd.io/ILyBs6l2QIWmACKj99nDEQ?view)
+
 # lab0-c
 Assessing Your C Programming Skills
 
