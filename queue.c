@@ -26,10 +26,8 @@ void q_free(queue_t *q)
     if (q_status(q) == NOTHING) {
         return;
     }
-    list_ele_t *beRemoved = q->head;
-    while (beRemoved) {
-        q_remove_head(q, NULL, 0);
-        beRemoved = q->head;
+    while (q_remove_head(q, NULL, 0)) {
+        ;
     }
     free(q);
 }
@@ -44,7 +42,7 @@ void q_free(queue_t *q)
 bool q_insert_head(queue_t *q, char *s)
 {
     list_ele_t *newh;
-    /* if the queue is empty OR malloc() failed, return false */
+    /* if the queue is NULL OR malloc() failed, return false */
     if (q_status(q) == NOTHING || !(newh = malloc(sizeof(list_ele_t)))) {
         return false;
     }
@@ -74,7 +72,7 @@ bool q_insert_head(queue_t *q, char *s)
 bool q_insert_tail(queue_t *q, char *s)
 {
     list_ele_t *newt;
-    /* if the queue is empty OR malloc() failed, return false */
+    /* if the queue is NULL OR malloc() failed, return false */
     if (q_status(q) == NOTHING || !(newt = malloc(sizeof(list_ele_t)))) {
         return false;
     }
@@ -136,7 +134,7 @@ bool q_remove_head(queue_t *q, char *sp, size_t bufsize)
 int q_size(queue_t *q)
 {
     if (q_status(q) == NOTHING || q_status(q) == EMPTY) {
-        return false;
+        return 0;
     }
     return q->size;
 }
@@ -193,11 +191,7 @@ int q_status(const queue_t *q)
     if (!q) {
         return NOTHING;
     } else {
-        if (!q->head && !q->tail) {
-            return EMPTY;
-        } else {
-            return OTHERS;
-        }
+        return (!q->head) ? EMPTY : OTHERS;
     }
 }
 
