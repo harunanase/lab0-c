@@ -107,6 +107,6 @@ void q_sort(queue_t *q);
 int q_status(const queue_t *q);
 
 int compare(const list_ele_t *a, const list_ele_t *b);
-list_ele_t *mergeSort(list_ele_t *head);
+list_ele_t *merge_sort(list_ele_t *head);
 list_ele_t *merge(list_ele_t *l1, list_ele_t *l2);
 #endif /* LAB0_QUEUE_H */

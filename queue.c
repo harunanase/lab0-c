@@ -177,7 +177,7 @@ void q_sort(queue_t *q)
         (q->head && !q->head->next)) {
         return;
     }
-    q->head = mergeSort(q->head);
+    q->head = merge_sort(q->head);
     /*list_ele_t *i = q->head;
     for (; i->next != NULL; i = i->next) {
         ;
@@ -212,29 +212,22 @@ list_ele_t *merge(list_ele_t *l1, list_ele_t *l2)
     while (l1 && l2) {
         if (compare(l1, l2) < 0) {
             tmp->next = l1;
-            tmp = tmp->next;
             l1 = l1->next;
         } else {
             tmp->next = l2;
-            tmp = tmp->next;
             l2 = l2->next;
         }
+        tmp = tmp->next;
     }
 
-    if (l1) {
-        tmp->next = l1;
-    }
-    if (l2) {
-        tmp->next = l2;
-    }
-
+    tmp->next = (l1) ? l1 : l2;
     list_ele_t *head = q->next;
 
     return head;
 }
 
 
-list_ele_t *mergeSort(list_ele_t *head)
+list_ele_t *merge_sort(list_ele_t *head)
 {
     if (!head || !head->next) {
         return head;
@@ -251,8 +244,8 @@ list_ele_t *mergeSort(list_ele_t *head)
     fast = slow->next;
     slow->next = NULL;
 
-    list_ele_t *l1 = mergeSort(head);
-    list_ele_t *l2 = mergeSort(fast);
+    list_ele_t *l1 = merge_sort(head);
+    list_ele_t *l2 = merge_sort(fast);
 
     return merge(l1, l2);
 }
